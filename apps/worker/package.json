@@ -1,0 +1,14 @@
+{
+  "name": "@foundry/worker",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "@swc-node/register": "^1.11.1",
+    "@swc/core": "^1.13.5"
+  },
+  "scripts": {
+    "dev": "node --watch-path=../api/src --watch-path=../../packages/shared/dist --watch-path=../../packages/workflow-engine/dist -r @swc-node/register ../api/src/worker.ts",
+    "start": "node ../api/dist/worker.js",
+    "typecheck": "tsc -p ../api/tsconfig.json --noEmit --pretty false"
+  }
+}

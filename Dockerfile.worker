@@ -1,0 +1,10 @@
+FROM node:22-bookworm-slim
+WORKDIR /app
+RUN corepack enable
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml turbo.json tsconfig.base.json ./
+COPY packages ./packages
+COPY apps/api ./apps/api
+COPY apps/worker ./apps/worker
+RUN pnpm install --frozen-lockfile
+RUN pnpm --filter @foundry/shared build && pnpm --filter @foundry/workflow-engine build && pnpm --filter @foundry/api build
+CMD ["pnpm", "--filter", "@foundry/api", "start:worker"]

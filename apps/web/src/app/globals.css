@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: 222 24% 10%;
+  --panel: 0 0% 100%;
+  --line: 220 16% 88%;
+  --mute: 220 8% 42%;
+  --accent: 221 83% 53%;
+  --canvas: 220 20% 96%;
+  color-scheme: light;
+}
+
+.dark {
+  --ink: 210 20% 96%;
+  --panel: 222 16% 9%;
+  --line: 220 10% 18%;
+  --mute: 220 8% 66%;
+  --accent: 217 92% 68%;
+  --canvas: 225 16% 6%;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: hsl(var(--canvas));
+  color: hsl(var(--ink));
+  font-family: var(--font-sans), ui-sans-serif, system-ui;
+}
+
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+::selection { background: hsl(var(--accent) / 0.28); }
+
+.canvas-dot {
+  background-image: radial-gradient(hsl(var(--mute) / 0.35) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
